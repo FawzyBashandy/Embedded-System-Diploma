@@ -9,22 +9,22 @@ int main()
     {
         if(a>c)
         {
-            printf("Largest Number is : %f",a);
+            printf("Largest Number is : %g",a);
         }
         else
         {
-            printf("Largest Number is: %f",c);
+            printf("Largest Number is: %g",c);
         }
     }
     else
     {
         if(b>c)
         {
-            printf("Largest Number is : %f",b);
+            printf("Largest Number is : %g",b);
         }
         else
         {
-            printf("Largest Number is : %f",c);
+            printf("Largest Number is : %g",c);
         }
 
     }
