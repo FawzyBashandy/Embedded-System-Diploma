@@ -36,6 +36,4 @@ int main()
         }
         printf("\n");
     }
-
-
 }
