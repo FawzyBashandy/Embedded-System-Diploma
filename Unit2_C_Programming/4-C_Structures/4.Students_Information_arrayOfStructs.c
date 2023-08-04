@@ -30,16 +30,16 @@ void student_Read(struct Sstudent *ptr)
     fflush(stdin);
     scanf("%s",&ptr->m_name);
     fflush(stdin);
-    printf("\nEnter roll number : ");
+    printf("Enter roll number : ");
     scanf("%d",&ptr->m_roll);
     fflush(stdin);
-    printf("\nEnter marks number : ");
-    scanf("%d",&ptr->m_marks);
+    printf("Enter marks number : ");
+    scanf("%f",&ptr->m_marks);
     fflush(stdin);
 }
 void student_Print(struct Sstudent *ptr)
 {
-    printf("Displaying %s Information: \n",&ptr->m_name);
+    printf("\nDisplaying %s Information: \n",&ptr->m_name);
     printf("Name: %s\n",ptr->m_name);
     printf("Roll: %d\n",ptr->m_roll);
     printf("Marks: %f\n",ptr->m_marks);
