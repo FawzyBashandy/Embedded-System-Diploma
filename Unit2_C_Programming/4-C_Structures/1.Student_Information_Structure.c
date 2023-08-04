@@ -18,16 +18,19 @@ int main()
 void student_Read(struct Sstudent *ptr)
 {
     printf("Please Enter Name : ");
-    fgets(ptr->m_name,50,stdin);
-    printf("\nEnter roll number : ");
+    gets(ptr->m_name);
+    printf("Enter roll number : ");
     scanf("%d",&ptr->m_roll);
-    printf("\nEnter marks number : ");
-    scanf("%d",&ptr->m_marks);
+    fflush(stdin);
+    printf("Enter marks number : ");
+    fflush(stdin);
+    scanf("%f",&ptr->m_marks);
 }
 void student_Print(struct Sstudent *ptr)
 {
+    printf("______________________________________________\n\n");
     printf("Displaying %s Information: \n",&ptr->m_name);
     printf("Name: %s",ptr->m_name);
-    printf("Roll: %d",ptr->m_roll);
-    printf("Marks: %f",ptr->m_marks);
+    printf("\nRoll: %d",ptr->m_roll);
+    printf("\nMarks: %f",ptr->m_marks);
 }
