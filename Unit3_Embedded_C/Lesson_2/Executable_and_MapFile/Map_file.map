@@ -1,0 +1,77 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+mem              0x00000000         0x04000000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00010000                . = 0x10000
+
+.reset          0x00010000       0x10
+ Startup.o(.text)
+ .text          0x00010000       0x10 Startup.o
+                0x00010000                reset
+
+.text           0x00010010       0x70
+ *(.text)
+ .text          0x00010010       0x20 App.o
+                0x00010010                main
+ .text          0x00010030       0x50 Uart.o
+                0x00010030                Uart_Send_String
+
+.glue_7         0x00010080        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x00010080        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x00010080        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00010080        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00010080        0x0
+ .iplt          0x00000000        0x0 Startup.o
+
+.rel.dyn        0x00010080        0x0
+ .rel.iplt      0x00000000        0x0 Startup.o
+
+.data           0x00010080       0x64
+ *(.data)
+ .data          0x00010080        0x0 Startup.o
+ .data          0x00010080       0x64 App.o
+                0x00010080                String
+ .data          0x000100e4        0x0 Uart.o
+
+.igot.plt       0x000100e4        0x0
+ .igot.plt      0x00000000        0x0 Startup.o
+
+.bss            0x000100e4        0x0
+ *(.bss)
+ .bss           0x000100e4        0x0 Startup.o
+ .bss           0x000100e4        0x0 App.o
+ .bss           0x000100e4        0x0 Uart.o
+ *(COMMON)
+                0x000110e4                . = (. + 0x1000)
+                0x000110e4                Stack_Top = .
+LOAD App.o
+LOAD Uart.o
+LOAD Startup.o
+OUTPUT(Learn-In-Depth.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x14 Startup.o
+ .ARM.attributes
+                0x00000014       0x30 App.o
+ .ARM.attributes
+                0x00000044       0x30 Uart.o
+
+.comment        0x00000000       0x11
+ .comment       0x00000000       0x11 App.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 Uart.o
