@@ -1,0 +1,41 @@
+$ arm-none-eabi-nm.exe main.o
+00000000 D G_variables
+00000000 R GC_variables
+00000000 b GU_variables
+00000000 T main
+
+##########################################
+
+$ arm-none-eabi-nm.exe startup.o
+00000080 T _Default_Handler
+         U _E_Data
+         U _E_Text
+00000000 T _Reset
+         U _S_Bss
+         U _S_Data
+00000080 W Bus_Fault_Handler
+00000080 W Hard_Fault_Handler
+         U main
+00000080 W NMI_Handler
+         U Stack_Top
+00000000 D Vectors
+
+##########################################
+
+$ arm-none-eabi-nm.exe Learn-In-Depth.elf
+08000114 T _Default_Handler
+20000010 B _E_Bss
+20000008 D _E_Data
+08000120 T _E_Text
+08000094 T _Reset
+20000008 B _S_Bss
+20000000 D _S_Data
+08000114 W Bus_Fault_Handler
+20000000 D G_variables
+08000120 R GC_variables
+20000008 b GU_variables
+08000114 W Hard_Fault_Handler
+08000020 T main
+08000114 W NMI_Handler
+20001010 B Stack_Top
+08000000 T Vectors

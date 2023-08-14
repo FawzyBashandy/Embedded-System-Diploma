@@ -1,0 +1,27 @@
+$ arm-none-eabi-nm.exe main.o
+00000000 D G_variables
+00000000 R GC_variables
+00000000 b GU_variables
+00000000 T main
+
+
+##########################################
+
+$ arm-none-eabi-nm.exe startup.o
+00000006 t _Default_Handler
+00000000 t _Reset_Handler
+         U main
+         U Stack_Top
+
+
+##########################################
+
+$ arm-none-eabi-nm.exe Learn-In-Depth.elf
+0800009a t _Default_Handler
+08000094 t _Reset_Handler
+20000000 D G_variables
+0800009c R GC_variables
+20000008 b GU_variables
+08000020 T main
+20001010 B Stack_Top
+
