@@ -1,0 +1,25 @@
+#prepared by Fawzy Mohamed
+#Compiler and machine Specific
+CC=arm-none-eabi-
+CFLAGS=-g -mcpu=arm926ej-s
+LIBS=
+##
+INCS=-I .
+SRC=$(wildcard *.c)
+OBJ=$(SRC:.c=.o)
+As=$(wildcard *.s)
+AsOBJ=$(As:.s=.o)
+ProjectName=Learn-In-Depth
+
+$(ProjectName).bin:$(ProjectName).elf
+	$(CC)objcopy.exe -O binary $< $@
+	@echo "========Build is Done========"
+$(ProjectName).elf: $(OBJ) $(AsOBJ)
+	$(CC)ld.exe -T Linker_Script.ld $(OBJ) $(AsOBJ) -o $@
+%.o:%.c
+	$(CC)gcc.exe $(CFLAGS) $(INCS) -c $< -o $@
+%.o:%.s
+	$(CC)as.exe $(CFLAGS) $(INCS)  $< -o $@
+clean:
+	rm *.o *.elf
+	@echo "Everything is Clear"
