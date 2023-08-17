@@ -1,0 +1,26 @@
+#prepared by Fawzy Mohamed
+#Compiler and machine Specific
+CC=arm-none-eabi-
+CFLAGS=-gdwarf-2 -g -mcpu=cortex-m4 
+LIBS=
+##
+INCS=-I .
+SRC=$(wildcard *.c)
+OBJ=$(SRC:.c=.o)
+As=$(wildcard *.s)
+AsOBJ=$(As:.s=.o)
+ProjectName=Lab4_CortexM4
+
+$(ProjectName).hex:$(ProjectName).elf
+	$(CC)objcopy.exe -O binary $< $@
+	@echo "========Build is Done========"
+$(ProjectName).elf: $(OBJ) $(AsOBJ)
+	$(CC)ld.exe -T Linker_Script.ld $(OBJ) $(AsOBJ) -o $@ -Map=Map_File.map
+	cp $@ $(ProjectName).axf
+%.o:%.c
+	$(CC)gcc.exe $(CFLAGS) $(INCS) -c $< -o $@
+%.o:%.s
+	$(CC)as.exe $(CFLAGS) $(INCS)  $< -o $@
+clean:
+	rm *.o *.elf *.asm
+	@echo "Everything is Clear"

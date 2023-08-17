@@ -1,0 +1,16 @@
+$ arm-none-eabi-nm.exe main.o
+00000000 T main
+
+$ arm-none-eabi-nm.exe Startup.o
+00000080 T _Default_Handler
+         U _E_Data
+         U _E_Text
+00000000 T _Reset
+         U _S_Bss
+         U _S_Data
+00000080 W Bus_Fault_Handler
+00000000 R G_P_Fn
+00000080 W Hard_Fault_Handler
+         U main
+00000080 W NMI_Handler
+00000000 b Stack
