@@ -12,6 +12,7 @@ void NMI_Handler() __attribute__((weak,alias("_Default_Handler")));;
 void Hard_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
 void Bus_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
 void _Default_Handler ();
+
 static uint32 Stack[256]; //Static here to limit scopt of Stack array to be within Startup.c ONLY
 
 void (* const G_P_Fn[])() __attribute__((section("._Vectors"))) =
