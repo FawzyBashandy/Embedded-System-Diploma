@@ -7,6 +7,11 @@ extern uint32 _S_Bss;
 extern uint32 _E_Bss;
 extern void main (void);
 
+void _Reset ();
+void NMI_Handler() __attribute__((weak,alias("_Default_Handler")));;
+void Hard_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
+void Bus_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
+void _Default_Handler ();
 static uint32 Stack[256]; //Static here to limit scopt of Stack array to be within Startup.c ONLY
 
 void (* const G_P_Fn[])() __attribute__((section("._Vectors"))) =
@@ -15,15 +20,13 @@ void (* const G_P_Fn[])() __attribute__((section("._Vectors"))) =
 	_Reset,
 	NMI_Handler,
 	Bus_Fault_Handler,
-	_Default_Handler,
+	NMI_Handler,
 	_Default_Handler,
 	_Default_Handler
 };
 
 
-void NMI_Handler() __attribute__((weak,alias("_Default_Handler")));;
-void Hard_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
-void Bus_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
+
 
 
 void _Reset()
