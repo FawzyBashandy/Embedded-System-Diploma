@@ -12,11 +12,12 @@ void NMI_Handler() __attribute__((weak,alias("_Default_Handler")));;
 void Hard_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
 void Bus_Fault_Handler() __attribute__((weak,alias("_Default_Handler")));;
 void _Default_Handler ();
+
 static uint32 Stack[256]; //Static here to limit scopt of Stack array to be within Startup.c ONLY
 
 void (* const G_P_Fn[])() __attribute__((section("._Vectors"))) =
 {
-	(void (*) ())((uint32)Stack + sizeof(Stack)), //Address of The last element in Stack array ((stack + sizeof(stack)))
+	(void (*) ())((uint32)Stack + sizeof(Stack)),
 	_Reset,
 	NMI_Handler,
 	Bus_Fault_Handler,
@@ -40,12 +41,14 @@ void _Reset()
 	{
 		P_Dst[i]=(uint8)P_Src[i];
 	}
+	
 	//Init bss with zeros in RAM
 	P_Dst=(uint8 *)&_S_Bss;
 	for(uint32 i=0 ; i<Bss_Size ; i++)
 	{
 		P_Dst[i]=(uint8)0;
 	}
+	
 	//Jump To main :)
 	main();
 }
