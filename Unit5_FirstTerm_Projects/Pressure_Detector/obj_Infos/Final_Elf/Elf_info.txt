@@ -1,0 +1,193 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x800001c
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          94280 (bytes into file)
+  Flags:                             0x5000200, Version5 EABI, <unknown>
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         2
+  Size of section headers:           40 (bytes)
+  Number of section headers:         17
+  Section header string table index: 16
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        0800001c 01001c 0003dc 00  AX  0   0  4
+  [ 2] .rodata           PROGBITS        080003f8 0103f8 000008 00   A  0   0  4
+  [ 3] .bss              NOBITS          20000000 020000 00001c 00  WA  0   0  4
+  [ 4] .debug_info       PROGBITS        00000000 010400 003582 00      0   0  1
+  [ 5] .debug_abbrev     PROGBITS        00000000 013982 0009f9 00      0   0  1
+  [ 6] .debug_loc        PROGBITS        00000000 01437b 00058c 00      0   0  1
+  [ 7] .debug_aranges    PROGBITS        00000000 014907 0000c0 00      0   0  1
+  [ 8] .debug_line       PROGBITS        00000000 0149c7 000fc2 00      0   0  1
+  [ 9] .debug_str        PROGBITS        00000000 015989 000808 01  MS  0   0  1
+  [10] .comment          PROGBITS        00000000 016191 00007b 01  MS  0   0  1
+  [11] .ARM.attributes   ARM_ATTRIBUTES  00000000 01620c 000033 00      0   0  1
+  [12] .debug_frame      PROGBITS        00000000 016240 00033c 00      0   0  4
+  [13] .vectors          PROGBITS        08000000 010000 00001c 00   A  0   0  4
+  [14] .symtab           SYMTAB          00000000 01657c 0006f0 10     15  66  4
+  [15] .strtab           STRTAB          00000000 016c6c 000334 00      0   0  1
+  [16] .shstrtab         STRTAB          00000000 016fa0 0000a8 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings)
+  I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
+  O (extra OS processing required) o (OS specific), p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x010000 0x08000000 0x08000000 0x00400 0x00400 R E 0x10000
+  LOAD           0x020000 0x20000000 0x08000400 0x00000 0x0001c RW  0x10000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text .rodata .vectors 
+   01     .bss 
+
+There is no dynamic section in this file.
+
+There are no relocations in this file.
+
+There are no unwind sections in this file.
+
+Symbol table '.symtab' contains 111 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0800001c     0 SECTION LOCAL  DEFAULT    1 
+     2: 080003f8     0 SECTION LOCAL  DEFAULT    2 
+     3: 20000000     0 SECTION LOCAL  DEFAULT    3 
+     4: 00000000     0 SECTION LOCAL  DEFAULT    4 
+     5: 00000000     0 SECTION LOCAL  DEFAULT    5 
+     6: 00000000     0 SECTION LOCAL  DEFAULT    6 
+     7: 00000000     0 SECTION LOCAL  DEFAULT    7 
+     8: 00000000     0 SECTION LOCAL  DEFAULT    8 
+     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000     0 SECTION LOCAL  DEFAULT   10 
+    11: 00000000     0 SECTION LOCAL  DEFAULT   11 
+    12: 00000000     0 SECTION LOCAL  DEFAULT   12 
+    13: 08000000     0 SECTION LOCAL  DEFAULT   13 
+    14: 00000000     0 FILE    LOCAL  DEFAULT  ABS Alarm_Acutator.c
+    15: 080003f8     0 NOTYPE  LOCAL  DEFAULT    2 $d
+    16: 0800001c     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    17: 08000034     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    18: 08000040     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    19: 08000060     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    20: 08000070     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    21: 0800008c     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    22: 08000098     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    23: 080000ac     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    24: 080000b4     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    25: 080000c8     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    26: 00000000     0 FILE    LOCAL  DEFAULT  ABS Led_Driver.c
+    27: 080000d0     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    28: 08000104     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    29: 08000108     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    30: 08000140     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    31: 08000144     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    32: 08000188     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    33: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.c
+    34: 08000194     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    35: 080001b0     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    36: 080001bc     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    37: 080001dc     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    38: 00000000     0 FILE    LOCAL  DEFAULT  ABS Main_Algo.c
+    39: 20000000     0 NOTYPE  LOCAL  DEFAULT    3 $d
+    40: 080003fc     0 NOTYPE  LOCAL  DEFAULT    2 $d
+    41: 080001f4     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    42: 0800020c     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    43: 08000218     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    44: 08000244     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    45: 08000258     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    46: 08000270     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    47: 0800027c     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    48: 08000294     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    49: 080002a0     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    50: 080002b8     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    51: 00000000     0 FILE    LOCAL  DEFAULT  ABS Pressure_Sensor.c
+    52: 20000004     0 NOTYPE  LOCAL  DEFAULT    3 $d
+    53: 080002bc     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    54: 080002dc     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    55: 080002ec     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    56: 0800030c     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    57: 0800031c     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    58: 08000338     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    59: 00000000     0 FILE    LOCAL  DEFAULT  ABS startup.c
+    60: 08000000     0 NOTYPE  LOCAL  DEFAULT   13 $d
+    61: 08000344     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    62: 08000388     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    63: 08000394     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    64: 080003d0     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    65: 080003d8     0 NOTYPE  LOCAL  DEFAULT    1 $t
+    66: 08000219    64 FUNC    GLOBAL DEFAULT    1 State_Pressure_Comparing
+    67: 080002bd    48 FUNC    GLOBAL DEFAULT    1 State_Reading_Pval
+    68: 08000345    80 FUNC    GLOBAL DEFAULT    1 DATA_Section_Copying
+    69: 20000008     1 OBJECT  GLOBAL DEFAULT    3 Alarm_Acutator_State_ID
+    70: 08000145    80 FUNC    GLOBAL DEFAULT    1 GPIO_INITIALIZATION
+    71: 080003ed    12 FUNC    WEAK   DEFAULT    1 NMI_Handler
+    72: 080003ed    12 FUNC    WEAK   DEFAULT    1 Bus_Fault_Handler
+    73: 080003ed    12 FUNC    WEAK   DEFAULT    1 Memory_Management_Handler
+    74: 08000099    28 FUNC    GLOBAL DEFAULT    1 HighPressure_Detected
+    75: 20000010     4 OBJECT  GLOBAL DEFAULT    3 Pressure_Sensor_State
+    76: 08000041    48 FUNC    GLOBAL DEFAULT    1 State_Alarm_ON
+    77: 08000071    40 FUNC    GLOBAL DEFAULT    1 State_ALarm_OFF
+    78: 080000b5    28 FUNC    GLOBAL DEFAULT    1 NormalPressure_Detected
+    79: 0800001d    36 FUNC    GLOBAL DEFAULT    1 State_Idle
+    80: 20000004     4 OBJECT  GLOBAL DEFAULT    3 gPressure_Sensor_Pval
+    81: 080003d9    20 FUNC    GLOBAL DEFAULT    1 Reset_Handler
+    82: 08000259    36 FUNC    GLOBAL DEFAULT    1 State_HighPressure
+    83: 2000101c     0 NOTYPE  GLOBAL DEFAULT    3 Stack_Top
+    84: 20000000     0 NOTYPE  GLOBAL DEFAULT    2 _E_DATA
+    85: 080002ed    48 FUNC    GLOBAL DEFAULT    1 State_Sending_Pval
+    86: 080000f1    24 FUNC    GLOBAL DEFAULT    1 getPressureVal
+    87: 080003ed    12 FUNC    GLOBAL DEFAULT    1 Default_Handler
+    88: 08000000    28 OBJECT  GLOBAL DEFAULT   13 Vectors
+    89: 2000001c     0 NOTYPE  GLOBAL DEFAULT    3 _E_BSS
+    90: 20000014     1 OBJECT  GLOBAL DEFAULT    3 Pressure_Sensor_State_ID
+    91: 0800031d    40 FUNC    GLOBAL DEFAULT    1 State_Waiting
+    92: 2000000c     4 OBJECT  GLOBAL DEFAULT    3 Alarm_Acutator_State
+    93: 08000109    60 FUNC    GLOBAL DEFAULT    1 Set_Alarm_actuator
+    94: 080003fc     4 OBJECT  GLOBAL DEFAULT    2 const_gPval_Threshold
+    95: 08000195    40 FUNC    GLOBAL DEFAULT    1 main
+    96: 080003ed    12 FUNC    WEAK   DEFAULT    1 Usage_Fault_Handler
+    97: 20000000     4 OBJECT  GLOBAL DEFAULT    3 gMain_Algo_Pval
+    98: 20000015     1 OBJECT  GLOBAL DEFAULT    3 Main_Algo_State_ID
+    99: 20000000     0 NOTYPE  GLOBAL DEFAULT    2 _S_DATA
+   100: 08000400     0 NOTYPE  GLOBAL DEFAULT    2 _E_RODATA
+   101: 080001bd    56 FUNC    GLOBAL DEFAULT    1 setup
+   102: 080000d1    32 FUNC    GLOBAL DEFAULT    1 Delay
+   103: 080001f5    36 FUNC    GLOBAL DEFAULT    1 State_Get_Pval
+   104: 20000000     0 NOTYPE  GLOBAL DEFAULT    3 _S_BSS
+   105: 080003ed    12 FUNC    WEAK   DEFAULT    1 Hard_Fault_Handler
+   106: 080003f8     4 OBJECT  GLOBAL DEFAULT    2 const_gAlarm_Timer
+   107: 20000018     4 OBJECT  GLOBAL DEFAULT    3 Main_Algo_State
+   108: 0800027d    36 FUNC    GLOBAL DEFAULT    1 State_NormalPressure
+   109: 08000395    68 FUNC    GLOBAL DEFAULT    1 BSS_Section_Init
+   110: 080002a1    28 FUNC    GLOBAL DEFAULT    1 Send_Pressure_Val
+
+No version information found in this file.
+Attribute Section: aeabi
+File Attributes
+  Tag_CPU_name: "Cortex-M3"
+  Tag_CPU_arch: v7
+  Tag_CPU_arch_profile: Microcontroller
+  Tag_THUMB_ISA_use: Thumb-2
+  Tag_ABI_PCS_wchar_t: 4
+  Tag_ABI_FP_denormal: Needed
+  Tag_ABI_FP_exceptions: Needed
+  Tag_ABI_FP_number_model: IEEE 754
+  Tag_ABI_align_needed: 8-byte
+  Tag_ABI_align_preserved: 8-byte, except leaf SP
+  Tag_ABI_enum_size: small
+  Tag_ABI_optimization_goals: Aggressive Debug
+  Tag_CPU_unaligned_access: v6

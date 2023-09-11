@@ -1,0 +1,34 @@
+##Prepared by Fawzy Bashandy
+#Compiler and machine Specific
+CC=arm-none-eabi-
+CFLAGS=-mcpu=cortex-m3 -gdwarf-2 -g
+INCS= -I inc/.
+##
+LIBS=
+SRC= $(wildcard src/*.c)
+OBJ= $(SRC:src/%.c=obj/%.o)
+As= $(wildcard *.s)
+AsOBJ=$(As:.s=.o)
+Linker_File=Linker_Script.ld
+ProjectName=bin/Pressure_Detector_Project
+
+all: $(ProjectName).bin
+	@echo "========Project is built successfully========"
+
+$(ProjectName).bin : $(ProjectName).elf
+	$(CC)objcopy.exe -O binary $< $@
+
+$(ProjectName).elf : $(OBJ) $(AsOBJ)
+	$(CC)ld.exe -T $(Linker_File) $(LIBS) $(OBJ) $(AsOBJ) -o $@ -Map=bin/MapFile.map
+
+obj/%.o : src/%.c
+	$(CC)gcc.exe -c $(CFLAGS) $(INCS) $< -o $@ 
+
+%.o : %.s
+	$(CC)as.exe $(CFLAGS) $(INCS) $< -o $@ 
+
+clean :
+	rm bin/*.elf bin/.bin
+
+cleanAll:
+	rm obj/*.o bin/*.elf bin/.bin

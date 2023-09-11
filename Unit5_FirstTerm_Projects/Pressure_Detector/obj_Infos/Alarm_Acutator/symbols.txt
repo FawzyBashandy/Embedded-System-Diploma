@@ -1,0 +1,10 @@
+00000004 C Alarm_Acutator_State
+00000001 C Alarm_Acutator_State_ID
+00000000 R const_gAlarm_Timer
+         U Delay
+0000007c T HighPressure_Detected
+00000098 T NormalPressure_Detected
+         U Set_Alarm_actuator
+00000054 T State_ALarm_OFF
+00000024 T State_Alarm_ON
+00000000 T State_Idle
