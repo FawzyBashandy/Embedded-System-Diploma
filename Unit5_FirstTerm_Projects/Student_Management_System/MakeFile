@@ -1,0 +1,32 @@
+##Prepared by Fawzy Bashandy
+#Compiler and machine Specific
+CC=
+CFLAGS=
+INCS= -I inc/.
+##
+LIBS=
+SRC= $(wildcard src/*.c)
+OBJ= $(SRC:src/%.c=obj/%.o)
+As= $(wildcard *.s)
+AsOBJ=$(As:.s=.o)
+ProjectName=bin/Student_Management_System
+
+all: $(ProjectName).exe
+	@echo "========Project is built successfully========"
+
+$(ProjectName).exe : $(OBJ) $(AsOBJ)
+	$(CC)gcc.exe $(LIBS) $(OBJ) $(AsOBJ) -o $@ 
+
+obj/%.o : src/%.c
+	$(CC)gcc.exe -c $(CFLAGS) $(INCS) $< -o $@ 
+
+%.o : %.s
+	$(CC)as.exe $(CFLAGS) $(INCS) $< -o $@ 
+
+clean :
+	rm bin/*.elf bin/.bin bin/*.exe
+
+cleanAll:
+	rm obj/*.o bin/*.exe bin/.elf
+run :
+	$(ProjectName).exe
