@@ -1,32 +1,51 @@
-##Prepared by Fawzy Bashandy
-#Compiler and machine Specific
-CC=
-CFLAGS=
-INCS= -I inc/.
-##
-LIBS=
-SRC= $(wildcard src/*.c)
-OBJ= $(SRC:src/%.c=obj/%.o)
-As= $(wildcard *.s)
-AsOBJ=$(As:.s=.o)
-ProjectName=bin/Student_Management_System
+## Prepared by Fawzy Bashandy
 
-all: $(ProjectName).exe
-	@echo "========Project is built successfully========"
+# Compiler and machine Specific
+CC = gcc.exe
+CFLAGS =
+INCS = -I inc/.
+LIBS =
 
-$(ProjectName).exe : $(OBJ) $(AsOBJ)
-	$(CC)gcc.exe $(LIBS) $(OBJ) $(AsOBJ) -o $@ 
+# Directories
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
 
-obj/%.o : src/%.c
-	$(CC)gcc.exe -c $(CFLAGS) $(INCS) $< -o $@ 
+# Source files and object files
+SRC = $(wildcard $(SRCDIR)/*.c)
+OBJ = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
+AS = $(wildcard *.s)
+ASOBJ = $(patsubst %.s, $(OBJDIR)/%.o, $(AS))
 
-%.o : %.s
-	$(CC)as.exe $(CFLAGS) $(INCS) $< -o $@ 
+# Executable name
+EXECUTABLE = $(BINDIR)/Student_Management_System.exe
 
-clean :
-	rm bin/*.elf bin/.bin bin/*.exe
+# Phony targets
+.PHONY: all clean cleanAll run
 
-cleanAll:
-	rm obj/*.o bin/*.exe bin/.elf
-run :
-	$(ProjectName).exe
+# Default target
+all: $(EXECUTABLE)
+	@echo "======== Project is built successfully ========"
+
+# Linking target
+$(EXECUTABLE): $(OBJ) $(ASOBJ)
+	$(CC) $(LIBS) $^ -o $@
+
+# Compile C source files
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) -c $(CFLAGS) $(INCS) $< -o $@
+
+# Assemble assembly source files
+$(OBJDIR)/%.o: %.s
+	$(CC) -c $(CFLAGS) $(INCS) $< -o $@
+
+# Clean targets
+clean:
+	rm -f $(BINDIR)/*.exe
+
+cleanAll: clean
+	rm -f $(OBJDIR)/*.o
+
+# Run target
+run:
+	$(EXECUTABLE)
