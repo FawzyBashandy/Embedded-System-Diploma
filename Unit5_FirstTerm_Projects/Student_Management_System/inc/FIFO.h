@@ -4,8 +4,10 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <conio.h>
 #define FIFO_Capacity 50
 #define Courses_Number 5
+
 //####################
 //######FIFO typdefs#####
 //####################

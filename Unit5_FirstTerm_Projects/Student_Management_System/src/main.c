@@ -68,5 +68,7 @@ int main ()
                 printf("Invalid Choice ! try again ..");
             }
         }
+        printf("\nPress any key to continue ...\n");\
+        getch();
     }
 }
