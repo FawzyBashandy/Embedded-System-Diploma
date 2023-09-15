@@ -295,6 +295,13 @@ void Print_Student(SNode_t * Student)
 }
 void Print_All_Students()
 {
+	if(0 == Students_FIFO->Count)
+	{
+        printf("----------------------------\n");
+		printf("[ERROR] There's no students to show !! \n");
+        printf("----------------------------\n");
+		return;
+	}
     SNode_t * Current_Student = Students_FIFO->Tail;
     while(Current_Student)
     {
