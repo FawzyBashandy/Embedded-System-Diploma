@@ -122,12 +122,16 @@ void Get_Student(Search_status Method)
         if(!stricmp(Name,Current_Student->StudentData->First_Name))
         {
             Print_Student(Current_Student);
-            return;
+			//we will not return as if there's multiple students with the same first name
+			flag = 0;
         }
         Current_Student = Current_Student->P_Next_Student;
     }
-    printf("[ERROR] : There's No Student with this First Name !\n");
+	if(flag)
+	{
+		printf("[ERROR] : There's No Student with this First Name !\n");
     }
+	}
     else if(Course_Search == Method)
     {
     printf("Enter Course ID : ");
@@ -240,7 +244,6 @@ void Update_Student()
                     if(Roll_Found == FIFO_Search_Roll(Roll_Number))
                     {
                         printf("[ERROR] The Roll Number is Already Taken !\nEnter Another Roll Number : ");
-                        Current_Student = Students_FIFO->Tail; //Go Back to tail
                         continue;
                     }
                     Current_Student->StudentData->Roll_Number = Roll_Number;
@@ -269,9 +272,8 @@ void Update_Student()
                 printf("[ERROR] Invalid Choice ! try again ...\n");
                 return;
             }
-            printf("[INFO] Updated Successsfully !\n");
         }
-
+        printf("[INFO] Updated Successsfully !\n");
     }
     else
     {
