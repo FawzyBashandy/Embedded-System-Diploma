@@ -36,7 +36,7 @@ int main(void)
 {
 	//Clock INIT
 	RCC_CFGR |= (0b10 << 0); //LET SYSCLK = PLLCLK
-	RCC_CFGR |= (0b0110 << 18);//PLLCLK=(HSI/2)*16 = 32KHZ
+	RCC_CFGR |= (0b0110 << 18);//PLLCLK=(HSI/2)*8 = 32KHZ
 	RCC_CFGR |= (0b100 << 8); //Let PCLK1 = HCLK/2
 	RCC_CFGR |= (0b101 << 11);	//Let PCLK2 = HCLK/4
 	RCC_CR |=(1<<24); //Enable PLL OSC
