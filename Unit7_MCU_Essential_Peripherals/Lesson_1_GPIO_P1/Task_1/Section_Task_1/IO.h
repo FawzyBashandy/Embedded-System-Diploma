@@ -1,0 +1,26 @@
+﻿/*
+ * IO.h
+ *
+ * Created: 23/02/2024 02:52:41 م
+ *  Author: Fawzy Bashandy
+ */ 
+
+
+#ifndef IO_H_
+#define IO_H_
+
+#define IO_BASE 0x20
+#define SFIOR       *((volatile unsigned char *)(IO_BASE + 0x30))
+
+/************************************************************************/
+/*	                     PORTA Registers                                */
+/************************************************************************/
+#define PORTA       *((volatile unsigned char *)(IO_BASE + 0x1B))
+#define DDRA        *((volatile unsigned char *)(IO_BASE + 0x1A))
+#define PINA        *((volatile unsigned char *)(IO_BASE + 0x19))
+
+
+
+
+
+#endif /* IO_H_ */
