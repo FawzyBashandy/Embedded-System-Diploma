@@ -1,0 +1,168 @@
+
+Atmega32_Lab.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000d8  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000012c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000012c  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000015c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  00000198  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000656  00000000  00000000  000001c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005ab  00000000  00000000  00000816  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000291  00000000  00000000  00000dc1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  00001054  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000324  00000000  00000000  00001088  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000af  00000000  00000000  000013ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000018  00000000  00000000  0000145b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 3a 00 	call	0x74	; 0x74 <main>
+  64:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <GPIO_Init>:
+		clearBit(PORTD,4);
+   }
+}
+void GPIO_Init()
+{
+	setBits(DDRD,4,0b1111);//Set all port a as output
+  6c:	81 b3       	in	r24, 0x11	; 17
+  6e:	80 6f       	ori	r24, 0xF0	; 240
+  70:	81 bb       	out	0x11, r24	; 17
+  72:	08 95       	ret
+
+00000074 <main>:
+#include <util/delay.h>
+void GPIO_Init();
+
+int main(void)
+{
+	GPIO_Init();
+  74:	0e 94 36 00 	call	0x6c	; 0x6c <GPIO_Init>
+    while (1) 
+   {
+		for(unsigned char i = 5 ; i<8 ;i++)
+  78:	25 e0       	ldi	r18, 0x05	; 5
+  7a:	1a c0       	rjmp	.+52     	; 0xb0 <main+0x3c>
+		{
+			setBit(PORTD,i);
+  7c:	32 b3       	in	r19, 0x12	; 18
+  7e:	81 e0       	ldi	r24, 0x01	; 1
+  80:	90 e0       	ldi	r25, 0x00	; 0
+  82:	02 2e       	mov	r0, r18
+  84:	02 c0       	rjmp	.+4      	; 0x8a <main+0x16>
+  86:	88 0f       	add	r24, r24
+  88:	99 1f       	adc	r25, r25
+  8a:	0a 94       	dec	r0
+  8c:	e2 f7       	brpl	.-8      	; 0x86 <main+0x12>
+  8e:	93 2f       	mov	r25, r19
+  90:	98 2b       	or	r25, r24
+  92:	92 bb       	out	0x12, r25	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  94:	3f ef       	ldi	r19, 0xFF	; 255
+  96:	40 e7       	ldi	r20, 0x70	; 112
+  98:	52 e0       	ldi	r21, 0x02	; 2
+  9a:	31 50       	subi	r19, 0x01	; 1
+  9c:	40 40       	sbci	r20, 0x00	; 0
+  9e:	50 40       	sbci	r21, 0x00	; 0
+  a0:	e1 f7       	brne	.-8      	; 0x9a <main+0x26>
+  a2:	00 c0       	rjmp	.+0      	; 0xa4 <main+0x30>
+  a4:	00 00       	nop
+			_delay_ms(100);
+			clearBit(PORTD,i);
+  a6:	92 b3       	in	r25, 0x12	; 18
+  a8:	80 95       	com	r24
+  aa:	89 23       	and	r24, r25
+  ac:	82 bb       	out	0x12, r24	; 18
+int main(void)
+{
+	GPIO_Init();
+    while (1) 
+   {
+		for(unsigned char i = 5 ; i<8 ;i++)
+  ae:	2f 5f       	subi	r18, 0xFF	; 255
+  b0:	28 30       	cpi	r18, 0x08	; 8
+  b2:	20 f3       	brcs	.-56     	; 0x7c <main+0x8>
+		{
+			setBit(PORTD,i);
+			_delay_ms(100);
+			clearBit(PORTD,i);
+		}
+		setBit(PORTD,4);
+  b4:	82 b3       	in	r24, 0x12	; 18
+  b6:	80 61       	ori	r24, 0x10	; 16
+  b8:	82 bb       	out	0x12, r24	; 18
+  ba:	8f ef       	ldi	r24, 0xFF	; 255
+  bc:	90 e7       	ldi	r25, 0x70	; 112
+  be:	22 e0       	ldi	r18, 0x02	; 2
+  c0:	81 50       	subi	r24, 0x01	; 1
+  c2:	90 40       	sbci	r25, 0x00	; 0
+  c4:	20 40       	sbci	r18, 0x00	; 0
+  c6:	e1 f7       	brne	.-8      	; 0xc0 <main+0x4c>
+  c8:	00 c0       	rjmp	.+0      	; 0xca <main+0x56>
+  ca:	00 00       	nop
+		_delay_ms(100);
+		clearBit(PORTD,4);
+  cc:	82 b3       	in	r24, 0x12	; 18
+  ce:	8f 7e       	andi	r24, 0xEF	; 239
+  d0:	82 bb       	out	0x12, r24	; 18
+   }
+  d2:	d2 cf       	rjmp	.-92     	; 0x78 <main+0x4>
+
+000000d4 <_exit>:
+  d4:	f8 94       	cli
+
+000000d6 <__stop_program>:
+  d6:	ff cf       	rjmp	.-2      	; 0xd6 <__stop_program>
