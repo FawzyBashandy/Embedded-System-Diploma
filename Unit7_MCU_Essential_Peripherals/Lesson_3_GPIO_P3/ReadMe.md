@@ -86,4 +86,4 @@ int main(void)
 ```
 
 ## Documentation
-For ***detailed API usage** and configurations, refer to comments in the header file (`STM32_F103C6_GPIO_Driver.h`) and the source file (`STM32_F103C6_GPIO_Driver.c`).
+For **detailed API usage** and configurations, refer to comments in the header file (`STM32_F103C6_GPIO_Driver.h`) and the source file (`STM32_F103C6_GPIO_Driver.c`).
