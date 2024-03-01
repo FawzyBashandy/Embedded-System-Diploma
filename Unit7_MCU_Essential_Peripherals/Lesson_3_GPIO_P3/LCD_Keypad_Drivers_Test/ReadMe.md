@@ -1,89 +1,42 @@
-# STM32F103C6 GPIO Driver
+# STM32F103C6 Project: Keypad and 7-Segment Display Interface
 
-This project provides a comprehensive General-Purpose Input/Output (GPIO) driver for the STM32F103C6 microcontroller. The driver is designed to facilitate easy and efficient use of GPIO functionality, allowing users to configure and control GPIO pins for a wide range of applications.
+This project demonstrates the interfacing of a keypad and a 7-segment display with the STM32F103C6 microcontroller. It showcases the ability to read inputs from a keypad and display corresponding outputs on a 7-segment display. This project is particularly useful for applications requiring numeric input and feedback display, such as simple calculators, numeric keypads for access control, and educational tools for electronics learning.
 
 ## Features
 
-- **Pin Initialization**: Configure GPIO pins as input, output, analog, or alternate function modes with customizable configurations including pull-up/pull-down resistors and output speed.
-- **Pin Read/Write**: Read the status of GPIO pins or an entire port, and write values to pins or an entire port with simple API calls.
-- **Pin Toggling**: Easily toggle the state of GPIO pins.
-- **Pin Locking**: Lock the configuration of GPIO pins to prevent unintended changes.
-- **Clock Management**: Enable or disable GPIO port clocks to manage power consumption.
+- **Keypad Input**: Utilizes a 4x4 matrix keypad to capture user inputs. The keypad driver scans for pressed keys and returns the corresponding character.
+- **7-Segment Display Output**: Displays the pressed keypad character on a 7-segment display. This project supports both common anode and common cathode 7-segment displays, showcasing the versatility of the driver in handling different types of displays.
+- **Custom Drivers**: Includes custom-written drivers for GPIO, Keypad, and LCD for the STM32F103C6 microcontroller. These drivers provide a foundation for interfacing with the hardware components and can be extended or modified for various applications.
 
-## Getting Started
+## Project Structure
 
-### Prerequisites
+- `STM32F103x6_GPIO_Driver.h` and `.c`: GPIO driver to configure and control GPIO pins.
+- `STM32F103x6_Keypad_Driver.h` and `.c`: Keypad driver to initialize the keypad and detect pressed keys.
+- `STM32F103x6_LCD_Driver.h` and `.c`: LCD driver for interfacing with character LCDs, used here to display messages and keypad inputs.
+- `main.c`: The main program file demonstrating the usage of keypad and 7-segment display drivers.
 
-- STM32F103C6 microcontroller
-- Compatible Integrated Development Environment (IDE) such as STM32CubeIDE or Keil µVision
-- Basic knowledge of C programming and microcontroller peripherals
+## How to Use
 
-### Installation
+### Hardware Setup:
 
-1. Clone this repository or download the source code.
-2. Include the header and source files (`STM32_F103C6_GPIO_Driver.h` and `STM32_F103C6_GPIO_Driver.c`) in your project.
-3. Ensure the STM32F103C6 Standard Peripheral Library is included in your project for necessary definitions and base support.
+1. Connect the 4x4 matrix keypad to the STM32F103C6 GPIO pins as specified in the `HAL_Keypad_INIT` function.
+2. Connect the 7-segment display to the GPIO pins as outlined in the `SevenSeg_init` function. Ensure proper configuration for common anode or common cathode type as per your display.
+3. Optionally, connect an LCD to display additional messages or keypad inputs.
 
-### Usage
+### Software Setup:
 
-1. **Clock Initialization**: Before using GPIO functionalities, enable the clock for the required GPIO port(s) using `Clock_Init()`.
+1. Include the custom drivers (GPIO, Keypad, and LCD) in your project directory.
+2. Use the `main.c` file as the entry point for your application.
 
-    ```c
-    Clock_Init();
-    ```
+### Compilation and Flashing:
 
-2. **GPIO Initialization**: Configure GPIO pins using `MCAL_GPIO_Init()` by specifying the GPIO port and a configuration structure (`pinConfig_t`).
+1. Compile the project using your preferred ARM toolchain.
+2. Flash the compiled binary to your STM32F103C6 microcontroller using a programmer (e.g., ST-Link) or bootloader.
 
-    ```c
-    pinConfig_t pinConfig;
-    pinConfig.pinNumber = GPIO_PIN_1;
-    pinConfig.pinMode = GPIO_MODE_OUTPUT_PP;
-    pinConfig.outputModeSpeed = GPIO_OUTPUT_SPEED_50MHZ;
-    MCAL_GPIO_Init(GPIOA, &pinConfig);
-    ```
+### Operation:
 
-3. **Reading and Writing**: Use `MCAL_GPIO_ReadPin()`, `MCAL_GPIO_WritePin()`, or their port-wide counterparts for pin manipulation.
-
-    ```c
-    // Write to a pin
-    MCAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_STATUS_HIGH);
-    
-    // Read from a pin
-    uint8_t pinStatus = MCAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-    ```
-
-4. **Toggling Pins**: Toggle the state of a GPIO pin with `MCAL_GPIO_TogglePin()`.
-
-    ```c
-    MCAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
-    ```
-
-5. **Locking Configuration**: Prevent accidental changes to a pin's configuration using `MCAL_GPIO_LockPin()`.
-
-    ```c
-    MCAL_GPIO_LockPin(GPIOA, GPIO_PIN_1);
-    ```
-
-## Example
-
-An example application toggling an LED based on a button press:
-
-```c
-int main(void)
-{
-    Clock_Init();
-    GPIO_Init(); // Assume this configures an LED on PB1 and a Button on PA1
-    
-    while(1)
-    {
-        if(MCAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_STATUS_LOW)
-        {
-            MCAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
-            while(MCAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_STATUS_LOW);
-        }
-    }
-}
-```
-
-## Documentation
-For **detailed API usage** and configurations, refer to comments in the header file (`STM32_F103C6_GPIO_Driver.h`) and the source file (`STM32_F103C6_GPIO_Driver.c`).
+1. Upon powering the microcontroller, the LCD (if connected) displays a welcome message.
+2. Pressing keys on the keypad will display the corresponding character on the 7-segment display.
+3. Special characters or functions (e.g., clear display) can be implemented as per the logic in `main.c`.
+### Simulation Video
+[**Click Here**]([https://drive.google.com/file/d/1ruCqIUQDqUTKVbpBIOCoJhSCE9KuYu8e/view?usp=drive_link])
