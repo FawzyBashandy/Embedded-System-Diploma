@@ -39,4 +39,4 @@ This project demonstrates the interfacing of a keypad and a 7-segment display wi
 2. Pressing keys on the keypad will display the corresponding character on the 7-segment display.
 3. Special characters or functions (e.g., clear display) can be implemented as per the logic in `main.c`.
 ### Simulation Video
-[**Click Here**]([https://drive.google.com/file/d/1ruCqIUQDqUTKVbpBIOCoJhSCE9KuYu8e/view?usp=drive_link])
+[**Click Here**](https://drive.google.com/file/d/1t_hVFZ6D7piF17R_wu23BV-8837htS5f/view?usp=drive_link)
