@@ -32,4 +32,4 @@ This project involved:
 Through the development of EXTI and LCD drivers for the STM32F103x6 microcontroller, this project not only highlights the capabilities of STM32 MCUs but also serves as a testament to the power of embedded systems in interfacing with the physical world. It stands as a comprehensive example for enthusiasts and professionals looking to deepen their understanding of microcontroller programming and peripheral management.
 
 ### Simulation Video
-[**Here**](https://drive.google.com/file/d/1OD27O1oyaNoiTGglQmCZ4f-UI7jogYxh/view?usp=drive_link)
+[**Here(Drive)**](https://drive.google.com/file/d/1OD27O1oyaNoiTGglQmCZ4f-UI7jogYxh/view?usp=drive_link)
