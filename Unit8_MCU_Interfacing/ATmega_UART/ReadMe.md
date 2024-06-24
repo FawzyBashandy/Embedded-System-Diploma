@@ -84,3 +84,6 @@ void LCD_Init() {
 3- Open the UART terminal and set the baud rate to 9600.
 
 4- Type characters into the terminal; they will be echoed back and displayed on the LCD.
+
+### Simulation Video
+[**Click Here[Drive]**](https://drive.google.com/file/d/1MAQxoXDZ7s-Q-1rW7ZsIOBtrUpXPrsdX/view?usp=sharing)
