@@ -36,6 +36,8 @@
 #define GPIOC_BASE								(uint8_t)(PERIPHERAL_MEMORY_BASE + 0x13)
 #define GPIOD_BASE								(uint8_t)(PERIPHERAL_MEMORY_BASE + 0x10)
 
+#define USART_BASE								(uint8_t)(PERIPHERAL_MEMORY_BASE + 0x0C)
+
 /*================================================================*/
 //-*-*-*-*-*-*-*-*-*-*-*-
 //Peripheral register: GPIO
@@ -50,6 +52,17 @@ typedef struct
 
 #define SFIOR   *((volatile uint8_t *)(PERIPHERAL_MEMORY_BASE + 0x30))  /*Special Function IO Register*/
 
+//-*-*-*-*-*-*-*-*-*-*-*-
+//Peripheral register: USART
+//-*-*-*-*-*-*-*-*-*-*-*
+
+typedef struct{
+	vuint8_t UDR;                 /*USART I/O data Register*/
+	vuint8_t UCSRA;               /*USART control/status Register A*/
+	vuint8_t UCSRB;               /*USART control/status Register B*/
+	vuint8_t UBRRL;               /*USART Baud Rate Register Low byte*/
+}USART_t;
+
 /*================================================================*/
 //-*-*-*-*-*-*-*-*-*-*-*-
 //Peripheral Instants: GPIO
@@ -61,5 +74,13 @@ typedef struct
 #define GPIOD 			((GPIO_t *)GPIOD_BASE)
 #define GPIOE 			((GPIO_t *)GPIOE_BASE)
 
+/*-----------------USART------------------------*/
+
+#define UDR     *((volatile uint8_t *)(PERIPHERAL_MEMORY_BASE + 0x0C))
+#define UCSRA   *((volatile uint8_t *)(PERIPHERAL_MEMORY_BASE + 0x0B))
+#define UCSRB   *((volatile uint8_t *)(PERIPHERAL_MEMORY_BASE + 0x0A))
+#define UBRRL   *((volatile uint8_t *)(PERIPHERAL_MEMORY_BASE + 0x09))
+#define UBRRH   *((volatile uint8_t *)(PERIPHERAL_MEMORY_BASE + 0x20))  /*USART Baud Rate Register High*/
+#define UCSRC   *((volatile uint8_t *)(PERIPHERAL_MEMORY_BASE + 0x20))  /*USART control/status Register C*/
 
 #endif /* ATmega32_H_ */

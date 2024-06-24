@@ -8,7 +8,7 @@
 /*================================================================
 * Includes
 *================================================================*/
-#include "Atmega32_UART.h"
+#include "ATmega32_UART_Driver.h"
 #include "Atmega32.h"
 
 /*================================================================
@@ -34,7 +34,7 @@ void MCAL_USART_Init(void)
     UBRRL = (uint8_t)ubrr_value;
 
     /* Set frame format: 8 data bits, no parity, 1 stop bit */
-    UCSRC = (1 << URSEL) | (1 << UCSZ1) | (1 << UCSZ0);
+    UCSRC = 0b10000110;  
 
     /* Enable transmitter and receiver */
     UCSRB = (1 << TXEN) | (1 << RXEN);
