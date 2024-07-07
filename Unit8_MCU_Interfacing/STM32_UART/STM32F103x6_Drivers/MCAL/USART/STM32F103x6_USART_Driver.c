@@ -199,6 +199,16 @@ void USART_IRQHandler(USART_t *USARTx, void (*p_IRQ_callback[])(void))
 /*********************************
 =========Supported APIs=========
 *********************************/
+/*
+======================================================================================================================
+* @Func_name   :   MCAL_USART_Init
+* @brief       :   Initialization of the specified USART instance using the specified parameters in the config structure.
+* @param [in]  :   USARTx: specifies the USART configuration structure to be initialized. Can be (USART1, USART2, or USART3).
+* @param [in]  :   config: specifies the configuration parameters for the specified USART instance.
+* @return      :   none.
+* Note         :   To enable any of the interrupts use the function "MCAL_USART_Enable_Interrupt".
+======================================================================================================================
+*/
 void MCAL_USART_Init(USART_Config_t * USARTx)
 {
 	uint32_t DIVMantissa , DIVFraction;
@@ -224,6 +234,15 @@ void MCAL_USART_Init(USART_Config_t * USARTx)
 	USARTx->USARTx->CR1 |= (USARTx->TxRx_Mode); //Enable Tx/Rx/BOTH
 
 }
+/*
+======================================================================================================================
+* @Func_name   :   MCAL_USART_DeInit
+* @brief       :   Deinitialization of the specified USART instance.
+* @param [in]  :   USARTx: specifies the USART configuration structure to be deinitialized. Can be (USART1, USART2, or USART3).
+* @return      :   none.
+* Note         :   Resets the USART peripheral and disables its interrupt.
+======================================================================================================================
+*/
 void MCAL_USART_DeInit(USART_Config_t * USARTx)
 {
 
@@ -245,6 +264,16 @@ void MCAL_USART_DeInit(USART_Config_t * USARTx)
 	}
 	MCAL_RCC_ResetPeripheral(&ResetUSART);
 }
+/*
+======================================================================================================================
+* @Func_name   :   MCAL_USART_SendData
+* @brief       :   Send data through the specified USART instance.
+* @param [in]  :   USARTx: specifies the USART configuration structure
+* @param [in]  :   data: data to be sent.
+* @return      :   none.
+* Note         :   If the mechanism is set to polling, the function will busy-wait until the transmission buffer is empty.
+======================================================================================================================
+*/
 void MCAL_USART_SendData(USART_Config_t * USARTx , uint16_t data)
 {
 
@@ -263,6 +292,16 @@ void MCAL_USART_SendData(USART_Config_t * USARTx , uint16_t data)
 	}
 
 }
+/*
+======================================================================================================================
+* @Func_name   :   MCAL_USART_ReceiveData
+* @brief       :   Receive data from the specified USART instance.
+* @param [in]  :   USARTx: specifies the USART configuration structure
+* @param [out] :   data: pointer to the buffer where the received data will be stored.
+* @return      :   none.
+* Note         :   If the mechanism is set to polling, the function will busy-wait until the reception buffer is not empty.
+======================================================================================================================
+*/
 void MCAL_USART_ReceiveData(USART_Config_t * USARTx , uint16_t * data)
 {
 	if(USARTx->Mechanism_type == Polling)
@@ -293,11 +332,29 @@ void MCAL_USART_ReceiveData(USART_Config_t * USARTx , uint16_t * data)
 	}
 }
 
+/*
+======================================================================================================================
+* @Func_name   :   MCAL_USART_WAIT_TransmissionComplete
+* @brief       :   Wait until the transmission is complete.
+* @param [in]  :   USARTx: specifies the USART instance.
+* @return      :   none.
+======================================================================================================================
+*/
 void MCAL_USART_WAIT_TransmissionComplete(USART_Config_t * USARTx)
 {
 	while((USARTx->USARTx->SR & USART_SR_TC));
 }
 
+/*
+======================================================================================================================
+* @Func_name   :   MCAL_USART_Enable_Interrupt
+* @brief       :   Enable the specified interrupt for the USART instance and set the callback function.
+* @param [in]  :   USARTx: specifies the USART configuration structure
+* @param [in]  :   IRQ: specifies the interrupt to be enabled. Must be a value from @ref USART_IRQ_Define
+* @param [in]  :   P_IRQEvent_CallBack: pointer to the callback function.
+* @return      :   none.
+======================================================================================================================
+*/
 void MCAL_USART_Enable_Interrupt(USART_Config_t * USARTx , uint8_t IRQ , void ( * P_IRQEvent_CallBack)(void))
 {
 	if(USARTx->USARTx == USART1)
@@ -326,6 +383,16 @@ void MCAL_USART_Enable_Interrupt(USART_Config_t * USARTx , uint8_t IRQ , void ( 
         SET_BIT(USARTx->USARTx->CR1, IRQ);
     }
 }
+
+/*
+======================================================================================================================
+* @Func_name   :   MCAL_UART_Interrupt_Disable
+* @brief       :   Disable the specified interrupt for the USART instance.
+* @param [in]  :   USARTx: specifies the USART configuration structure
+* @param [in]  :   IRQ: specifies the interrupt to be disabled , Must be a value from @ref USART_IRQ_Define
+* @return      :   none.
+======================================================================================================================
+*/
 void MCAL_UART_Interrupt_Disable(USART_Config_t * USARTx, uint8 IRQ)
 {
     if(IRQ == USART_IRQ_ERROR || IRQ == USART_IRQ_CTS)
