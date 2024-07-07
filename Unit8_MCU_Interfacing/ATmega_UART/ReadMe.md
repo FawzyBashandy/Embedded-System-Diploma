@@ -78,6 +78,12 @@ void LCD_Init() {
 ```
 ### Usage
 1- Connect the ATmega32 microcontroller to a UART terminal program on your PC.
+
 2- Compile and upload the code to the ATmega32.
+
 3- Open the UART terminal and set the baud rate to 9600.
+
 4- Type characters into the terminal; they will be echoed back and displayed on the LCD.
+
+### Simulation Video
+[**Click Here[Drive]**](https://drive.google.com/file/d/1MAQxoXDZ7s-Q-1rW7ZsIOBtrUpXPrsdX/view?usp=sharing)
