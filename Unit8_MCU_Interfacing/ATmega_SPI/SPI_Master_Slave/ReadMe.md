@@ -42,3 +42,6 @@ By implementing SPI communication on the ATmega32 microcontroller, this project 
 
 ### Simulation 
 
+https://github.com/FawzyBashandy/Embedded-System-Diploma/assets/131293631/fadd9d9e-d537-4608-ac93-71f3c55643b3
+
+
