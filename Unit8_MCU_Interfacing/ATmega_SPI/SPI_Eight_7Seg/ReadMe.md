@@ -30,6 +30,10 @@ The application operates as follows:
 
 ### Simulation 
 
+
+https://github.com/FawzyBashandy/Embedded-System-Diploma/assets/131293631/443571cd-b7ad-48ed-8ac1-91d603d8fe86
+
+
 ## Conclusion
 
 By interfacing SPI communication with the MAX7221 7-segment display driver on the ATmega32 microcontroller, this project illustrates how to efficiently drive multiple digits using minimal microcontroller resources. It serves as a practical example for developers looking to integrate SPI-based displays into embedded systems.
