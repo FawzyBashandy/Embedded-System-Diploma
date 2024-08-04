@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project provides a driver for the Timer0 module of the ATmega32 microcontroller. It includes an example demonstrating how to initialize the timer, configure it for compare match mode, and handle interrupts.
+This project provides a driver for the Timer0 module of the ATmega32 microcontroller. The example included demonstrates how to initialize the timer, configure it for compare match mode, and handle interrupts to increment a 7-segment display every second. Additionally, it toggles the PB3 pin to ensure the timing is correct.
 
 ## Features
 
@@ -59,11 +59,6 @@ This project provides a driver for the Timer0 module of the ATmega32 microcontro
 
 5. **Configure the GPIO**:
 
-    ```c
-    GPIOA->DDR = 0xFF;
-    GPIOB->DDR = 0x8; // Set PB3 as output
-    ```
-
 6. **Set up the interrupt callback**:
 
     ```c
@@ -116,7 +111,8 @@ This project provides a driver for the Timer0 module of the ATmega32 microcontro
 - **`void MCAL_TIMER0_CALLBACK_CompareMatch_INTERRUPT(void (*callback)(void));`**  
   Registers a callback for the compare match interrupt.
 
-## License
+## Simulation Video
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+https://github.com/user-attachments/assets/21e13007-6370-436e-88b1-1fdef2821395
+
 
