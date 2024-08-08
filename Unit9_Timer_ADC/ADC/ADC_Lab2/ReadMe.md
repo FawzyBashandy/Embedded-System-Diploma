@@ -34,3 +34,6 @@ Compile and upload the code to your ATmega32. Adjust the potentiometer to change
 - ATmega32 Microcontroller
 - AVR GCC Compiler
 - Potentiometer and BCD 7-segment display
+
+### Simulation Results
+![Lab2](https://github.com/user-attachments/assets/a5fb85b8-dcd0-4a7a-a3ee-a0e0fccc8d98)
