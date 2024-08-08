@@ -39,6 +39,9 @@ Compile and upload the code to your ATmega32. The LM35 sensor provides a voltage
 - LM35 Temperature Sensor
 - BCD 7-segment display
 - LCD Display
+  
+### Simulation Results
+![Lab4](https://github.com/user-attachments/assets/743d7060-bcd8-4f44-b8f9-cd69d8ad692a)
 
 ### Notes
 
