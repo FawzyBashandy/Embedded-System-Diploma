@@ -36,6 +36,9 @@ Compile and upload the code to your ATmega32. Adjust the potentiometer to change
 - AVR GCC Compiler
 - Potentiometer
 - LCD Display
+  
+### Simulation Results
+![Lab5](https://github.com/user-attachments/assets/a645e534-4391-4b20-bd9f-9dc363c446fd)
 
 ### Notes
 
