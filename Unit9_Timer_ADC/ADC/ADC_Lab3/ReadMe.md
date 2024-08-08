@@ -36,6 +36,9 @@ Compile and upload the code to your ATmega32. The LM35 sensor provides a voltage
 - AVR GCC Compiler
 - LM35 Temperature Sensor
 - BCD 7-segment display
+ 
+### Simulation Results
+![Lab3](https://github.com/user-attachments/assets/782f7fa7-a48b-477d-a08e-6323667e75e0)
 
 ### Notes
 
